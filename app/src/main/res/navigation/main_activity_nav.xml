@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/haritaFragment">
+
+    <fragment
+        android:id="@+id/detayFragment"
+        android:name="com.example.tripplanner.view.fragments.DetayFragment"
+        android:label="fragment_detay"
+        tools:layout="@layout/fragment_detay" >
+        <action
+            android:id="@+id/action_detayFragment_to_ziyaretEkleFragment"
+            app:destination="@id/ziyaretEkleFragment" />
+        <action
+            android:id="@+id/action_detayFragment_to_haritaFragment"
+            app:destination="@id/haritaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gezdiklerimFragment"
+        android:name="com.example.tripplanner.view.fragments.GezdiklerimFragment"
+        android:label="fragment_gezdiklerim"
+        tools:layout="@layout/fragment_gezdiklerim" >
+        <action
+            android:id="@+id/action_gezdiklerimFragment_to_yerEkleFragment"
+            app:destination="@id/yerEkleFragment" />
+        <action
+            android:id="@+id/action_gezdiklerimFragment_to_detayFragment"
+            app:destination="@id/detayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/haritaFragment"
+        android:name="com.example.tripplanner.view.fragments.HaritaFragment"
+        android:label="fragment_harita"
+        tools:layout="@layout/fragment_harita" />
+    <fragment
+        android:id="@+id/yerEkleFragment"
+        android:name="com.example.tripplanner.view.fragments.YerEkleFragment"
+        android:label="fragment_yer_ekle"
+        tools:layout="@layout/fragment_yer_ekle" >
+        <action
+            android:id="@+id/action_yerEkleFragment_to_haritaFragment"
+            app:destination="@id/haritaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ziyaretEkleFragment"
+        android:name="com.example.tripplanner.view.fragments.ZiyaretEkleFragment"
+        android:label="fragment_ziyaret_ekle"
+        tools:layout="@layout/fragment_ziyaret_ekle" />
+    <fragment
+        android:id="@+id/gezilecekFragment2"
+        android:name="com.example.tripplanner.view.fragments.GezilecekFragment"
+        android:label="fragment_gezilecek"
+        tools:layout="@layout/fragment_gezilecek" >
+        <action
+            android:id="@+id/action_gezilecekFragment2_to_yerEkleFragment"
+            app:destination="@id/yerEkleFragment" />
+        <action
+            android:id="@+id/action_gezilecekFragment2_to_detayFragment"
+            app:destination="@id/detayFragment" />
+    </fragment>
+</navigation>
