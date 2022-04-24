@@ -4,9 +4,9 @@ import kotlin.properties.Delegates
 
 class YerEntity {
 
-    var Id by Delegates.notNull<Int>()
-    var YerAdi: String? = null
-    var KisaTanim: String? = null
-    var KisaAciklama: String? = null
+    var id by Delegates.notNull<Int>()
+    var yerAdi: String? = null
+    var kisaTanim: String? = null
+    var kisaAciklama: String? = null
 
 }
