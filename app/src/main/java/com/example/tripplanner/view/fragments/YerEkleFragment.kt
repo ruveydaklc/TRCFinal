@@ -15,4 +15,8 @@ class YerEkleFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_yer_ekle, container, false)
     }
 
+
+
+
+
 }
