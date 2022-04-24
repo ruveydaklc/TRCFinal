@@ -99,4 +99,8 @@ class YerEkleFragment : Fragment() {
 
     }
 
+
+
+
+
 }
