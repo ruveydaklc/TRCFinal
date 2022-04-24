@@ -5,8 +5,9 @@ import kotlin.properties.Delegates
 
 class GezdiklerimEntity {
 
-    var Id by Delegates.notNull<Int>()
-    var Tarih: Date? = null
-    var Aciklama: String? = null
+    var id by Delegates.notNull<Int>()
+    var tarih: Date? = null
+    var aciklama: String? = null
+    var yerId = 0
 
 }
