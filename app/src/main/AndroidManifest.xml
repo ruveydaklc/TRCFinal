@@ -37,6 +37,9 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
+            android:name=".view.activities.TabActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.MainActivity"
             android:exported="true">
             <intent-filter>

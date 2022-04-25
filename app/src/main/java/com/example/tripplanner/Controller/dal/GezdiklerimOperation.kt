@@ -8,8 +8,11 @@ class GezdiklerimOperation(context: Context) {
     var TripPlannerDatabase : SQLiteDatabase? = null
     var dbOpenHelper: DatabaseOpenHelper
 
+    val dbName="TripPlannerDB"
+    val tableName="Yer"
+
     init {
-        dbOpenHelper = DatabaseOpenHelper(context, "TripPlannerDB",null,1)
+        dbOpenHelper = DatabaseOpenHelper(context, dbName,null,1)
     }
 
     fun open(){

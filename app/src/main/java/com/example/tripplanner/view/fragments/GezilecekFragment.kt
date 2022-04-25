@@ -5,29 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import com.example.tripplanner.R
 import com.example.tripplanner.databinding.FragmentGezilecekBinding
 
 
 class GezilecekFragment : Fragment() {
 
-    private lateinit var binding : FragmentGezilecekBinding
-
+    lateinit var binding:FragmentGezilecekBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentGezilecekBinding.inflate(layoutInflater, container, false)
 
-        clickListeners()
-
+        binding= FragmentGezilecekBinding.inflate(inflater)
         return binding.root
     }
 
-    private fun clickListeners(){
-
-        binding.tempButton.setOnClickListener {
-             Navigation.findNavController(binding.tempButton).navigate(R.id.action_gezilecekFragment2_to_yerEkleFragment)
-        }
-
-    }
 }
