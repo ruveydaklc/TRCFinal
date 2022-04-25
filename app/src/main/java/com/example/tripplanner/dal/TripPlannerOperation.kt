@@ -3,9 +3,8 @@ package com.example.tripplanner.dal
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import com.example.tripplanner.model.GezdiklerimEntity
+import com.example.tripplanner.model.ZiyaretEntity
 import com.example.tripplanner.model.YerEntity
 
 class TripPlannerOperation(context: Context) {
@@ -116,26 +115,26 @@ class TripPlannerOperation(context: Context) {
 
 
     @SuppressLint("Range")
-    fun ziyaretleriGetir(yerEntity: YerEntity): ArrayList<GezdiklerimEntity> {
+    fun ziyaretleriGetir(yerEntity: YerEntity): ArrayList<ZiyaretEntity> {
 
-        val ziyaretList2Return: ArrayList<GezdiklerimEntity> = arrayListOf()
-        var gezdiklerimEntity: GezdiklerimEntity
+        val ziyaretList2Return: ArrayList<ZiyaretEntity> = arrayListOf()
+        var ziyaretEntity: ZiyaretEntity
 
         openDB()
         val dbObject = tripPlannerDatabase!!.rawQuery("SELECT * FROM $gezdiklerimTableStr WHERE Yer = ${yerEntity.id}", null)
 
         if (dbObject.moveToFirst()) {
             do {
-                gezdiklerimEntity = GezdiklerimEntity()
+                ziyaretEntity = ZiyaretEntity()
                 // Get data from 0th column of selected row(outer).
-                gezdiklerimEntity.id = dbObject.getInt(0)
+                ziyaretEntity.id = dbObject.getInt(0)
                 // Preferred method over getting data from index. Indexes may shift.
-                gezdiklerimEntity.tarih =
+                ziyaretEntity.tarih =
                     dbObject.getString(dbObject.getColumnIndex(gezdiklerimTarihStr))
-                gezdiklerimEntity.aciklama =
+                ziyaretEntity.aciklama =
                     dbObject.getString(dbObject.getColumnIndex(gezdiklerimAciklamaStr))
-                gezdiklerimEntity.yerId = dbObject.getInt(dbObject.getColumnIndex(yerTableStr))
-                ziyaretList2Return.add(gezdiklerimEntity)
+                ziyaretEntity.yerId = dbObject.getInt(dbObject.getColumnIndex(yerTableStr))
+                ziyaretList2Return.add(ziyaretEntity)
             } while (dbObject.moveToNext())
         }
         dbObject.close()
@@ -170,12 +169,12 @@ class TripPlannerOperation(context: Context) {
         return gezdiklerimList2Return
     }
 
-    fun ziyaretEkle(gezdiklerimEntity: GezdiklerimEntity): Boolean {
+    fun ziyaretEkle(ziyaretEntity: ZiyaretEntity): Boolean {
 
         val cv = ContentValues()
-        cv.put(gezdiklerimTarihStr, gezdiklerimEntity.tarih)
-        cv.put(gezdiklerimAciklamaStr, gezdiklerimEntity.aciklama)
-        cv.put(yerTableStr, gezdiklerimEntity.yerId)
+        cv.put(gezdiklerimTarihStr, ziyaretEntity.tarih)
+        cv.put(gezdiklerimAciklamaStr, ziyaretEntity.aciklama)
+        cv.put(yerTableStr, ziyaretEntity.yerId)
 
         // TODO any condition-ensurement
 
