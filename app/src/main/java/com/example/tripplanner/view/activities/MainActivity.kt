@@ -3,11 +3,14 @@ package com.example.tripplanner.view.activities
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import com.example.tripplanner.R
 import com.example.tripplanner.databinding.ActivityMainBinding
 import com.example.tripplanner.databinding.TabLayoutBinding
 import com.example.tripplanner.view.fragments.GezdiklerimFragment
 import com.example.tripplanner.view.fragments.GezilecekFragment
+import com.example.tripplanner.view.fragments.YerEkleFragment
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +20,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        binding.fabYerEkle.setOnClickListener {
+            fragmentDegistir(YerEkleFragment())
+            binding.tabLayout.isVisible=false
+            binding.fabYerEkle.isVisible=false
+        }
 
         //adding tabs
         binding.tabLayout.addTab(binding.tabLayout.newTab())
@@ -52,15 +62,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun tabSec(index:Int){
-        val ft = supportFragmentManager.beginTransaction()
         when (index)
         {
-            0 ->
-                ft.replace(R.id.fragmentContainerView, GezilecekFragment())
-            1 ->
-                ft.replace(R.id.fragmentContainerView, GezdiklerimFragment())
+            0 ->fragmentDegistir(GezilecekFragment())
+            1 ->fragmentDegistir(GezdiklerimFragment())
         }
+    }
+
+    fun fragmentDegistir(fragment:Fragment){
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.fragmentContainerView, fragment)
         ft.commit()
+
+
     }
 
 
