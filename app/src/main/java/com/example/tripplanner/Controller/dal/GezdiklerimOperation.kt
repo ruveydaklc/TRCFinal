@@ -6,8 +6,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.example.tripplanner.Controller.bll.TripPlannerLogic
-import com.example.tripplanner.model.GezdiklerimEntity
 import com.example.tripplanner.model.YerEntity
+import com.example.tripplanner.model.ZiyaretEntity
 
 class GezdiklerimOperation(context: Context) {
 
@@ -39,10 +39,10 @@ class GezdiklerimOperation(context: Context) {
         }
     }
 
-    fun ziyaretEkle(gezdiklerimEntity: GezdiklerimEntity) : Boolean{
+    fun ziyaretEkle(gezdiklerimEntity: ZiyaretEntity) : Boolean{
 
         val cv = ContentValues()
-        cv.put(gezdiklerimTarihStr, TripPlannerLogic.persistDate(gezdiklerimEntity.tarih))
+        //cv.put(gezdiklerimTarihStr, TripPlannerLogic.persistDate(gezdiklerimEntity.tarih))
         cv.put(gezdiklerimAciklamaStr,gezdiklerimEntity.aciklama)
         cv.put(yerTableStr,gezdiklerimEntity.yerId)
 
@@ -62,9 +62,9 @@ class GezdiklerimOperation(context: Context) {
     }
 
     @SuppressLint("Range")
-    fun getGezilecekYer():ArrayList<GezdiklerimEntity>{
-        val geziklerimListe=ArrayList<GezdiklerimEntity>()
-        var yer : GezdiklerimEntity
+    fun getGezilecekYer():ArrayList<ZiyaretEntity>{
+        val geziklerimListe=ArrayList<ZiyaretEntity>()
+        var yer : ZiyaretEntity
         openDB()
         var cursor: Cursor =getTumGezilecekYer()
         if (cursor.moveToFirst()){

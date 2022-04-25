@@ -90,7 +90,7 @@ class ZiyaretEkleFragment : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        binding.clZiyaretEkleTarih.setOnClickListener {
+        binding.tvTarihEkle.setOnClickListener {
             customDatePicker(calenderFunc())
         }
 
