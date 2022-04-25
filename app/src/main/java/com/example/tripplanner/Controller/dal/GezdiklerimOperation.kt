@@ -62,15 +62,15 @@ class GezdiklerimOperation(context: Context) {
     }
 
     @SuppressLint("Range")
-    fun getGezilecekYer():ArrayList<YerEntity>{
-        val geziklerimListe=ArrayList<YerEntity>()
+    fun getGezilecekYer():ArrayList<GezdiklerimEntity>{
+        val geziklerimListe=ArrayList<GezdiklerimEntity>()
         var yer : GezdiklerimEntity
         openDB()
         var cursor: Cursor =getTumGezilecekYer()
         if (cursor.moveToFirst()){
             do {
 
-                //todo gezilen yerler
+                //TODO gezilen yerler
 
 
             }while (cursor.moveToNext())
