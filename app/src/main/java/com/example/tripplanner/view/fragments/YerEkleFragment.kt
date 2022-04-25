@@ -6,13 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tripplanner.R
+import com.example.tripplanner.databinding.FragmentYerEkleBinding
 
 /** Gezilecek Yer Ekleme Fragment*/
 class YerEkleFragment : Fragment() {
 
+    lateinit var binding: FragmentYerEkleBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_yer_ekle, container, false)
+        binding= FragmentYerEkleBinding.inflate(inflater)
+
+
+
+
+
+        return binding.root
+
     }
 
 
