@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tripplanner.R
+import com.example.tripplanner.databinding.FragmentGezilecekBinding
 
 
 class GezilecekFragment : Fragment() {
 
+    lateinit var binding:FragmentGezilecekBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gezilecek, container, false)
+
+        binding= FragmentGezilecekBinding.inflate(inflater)
+        return binding.root
     }
 
 }
