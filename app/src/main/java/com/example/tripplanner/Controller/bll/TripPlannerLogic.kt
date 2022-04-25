@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import com.example.tripplanner.Controller.dal.GezdiklerimOperation
 import com.example.tripplanner.Controller.dal.GezilecekOperation
+import com.example.tripplanner.model.GezdiklerimEntity
 import com.example.tripplanner.model.YerEntity
 import java.io.ByteArrayOutputStream
 import java.io.FileOutputStream
@@ -60,7 +61,7 @@ class TripPlannerLogic {
             return GezilecekOperation(context).getTumGezilecekYer()
         }
 
-        fun getGezdiklerimYerler(context: Context):ArrayList<YerEntity>{
+        fun getGezdiklerimYerler(context: Context):ArrayList<GezdiklerimEntity>{
             return GezdiklerimOperation(context).getGezilecekYer()
 
         }

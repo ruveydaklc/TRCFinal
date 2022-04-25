@@ -31,10 +31,6 @@ class GezilecekFragment : Fragment() {
 
     fun getTumGezilecekYerler(){
 
-        /*yerlerListe= TripPlannerLogic.getGezilecekYerler(requireContext())
-        binding.rvGezilecekYerler.layoutManager=LinearLayoutManager(requireContext())
-        binding.rvGezilecekYerler.adapter= YerAdapter(requireContext(),yerlerListe,::itemClick)*/
-
         yerlerListe= TripPlannerLogic.getGezilecekYerler(requireContext())
         val lm = LinearLayoutManager(requireContext())
         lm.orientation= LinearLayoutManager.VERTICAL
