@@ -6,9 +6,8 @@ import android.graphics.BitmapFactory
 import android.util.Base64.encodeToString
 import android.widget.Toast
 import com.example.tripplanner.dal.TripPlannerOperation
-import com.example.tripplanner.model.GezdiklerimEntity
+import com.example.tripplanner.model.ZiyaretEntity
 import com.example.tripplanner.model.YerEntity
-import com.example.tripplanner.view.fragments.YerEkleFragment
 import java.io.ByteArrayOutputStream
 import java.io.FileOutputStream
 import java.lang.Exception
@@ -25,9 +24,9 @@ class TripPlannerLogic {
             }
         }
 
-        fun ziyaretEkle(context: Context, gezdiklerimEntity: GezdiklerimEntity) : Boolean{
+        fun ziyaretEkle(context: Context, ziyaretEntity: ZiyaretEntity) : Boolean{
             val tripPlannerOperation = TripPlannerOperation(context)
-            return tripPlannerOperation.ziyaretEkle(gezdiklerimEntity).also {
+            return tripPlannerOperation.ziyaretEkle(ziyaretEntity).also {
                 if(it)
                     Toast.makeText(context,"Ziyaret başarıyla eklenmiştir", Toast.LENGTH_SHORT).show()
             }
@@ -38,7 +37,7 @@ class TripPlannerLogic {
             return tripPlannerOperation.tumYerleriGetir()
         }
 
-        fun ziyaretleriGetir(context: Context, yerEntity: YerEntity) : ArrayList<GezdiklerimEntity> {
+        fun ziyaretleriGetir(context: Context, yerEntity: YerEntity) : ArrayList<ZiyaretEntity> {
             val tripPlannerOperation = TripPlannerOperation(context)
             return tripPlannerOperation.ziyaretleriGetir(yerEntity)
         }
