@@ -16,8 +16,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.tripplanner.Controller.bll.TripPlannerLogic
 import com.example.tripplanner.bll.PermissionLogic
-import com.example.tripplanner.bll.TripPlannerLogic
 import com.example.tripplanner.databinding.FragmentZiyaretEkleBinding
 import com.example.tripplanner.model.ZiyaretEntity
 import com.example.tripplanner.view.activities.MainActivity
@@ -96,11 +96,11 @@ class ZiyaretEkleFragment : Fragment() {
                 // TODO get YerId from DetailsFragment
             }
             // TODO restriction to make Ziyaret Yer field non-null-0
-            TripPlannerLogic.ziyaretEkle(requireContext(),ziyaretEntity)
+            //TripPlannerLogic.ziyaretEkle(requireContext(),ziyaretEntity)
             requireActivity().onBackPressed()
         }
 
-        binding.clZiyaretEkleTarih.setOnClickListener {
+        binding.tvTarihEkle.setOnClickListener {
             customDatePicker(calenderFunc())
         }
 
