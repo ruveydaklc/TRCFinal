@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
+import com.example.tripplanner.Controller.dal.GezdiklerimOperation
 import com.example.tripplanner.Controller.dal.GezilecekOperation
 import com.example.tripplanner.model.YerEntity
 import java.io.ByteArrayOutputStream
@@ -55,8 +56,18 @@ class TripPlannerLogic {
 
         }
 
-        fun getYerler(context: Context):ArrayList<YerEntity>{
-            return GezilecekOperation(context).getGezilecekYer()
+        fun getGezilecekYerler(context: Context):ArrayList<YerEntity>{
+            return GezilecekOperation(context).getTumGezilecekYer()
+        }
+
+        fun getGezdiklerimYerler(context: Context):ArrayList<YerEntity>{
+            return GezdiklerimOperation(context).getGezilecekYer()
+
+        }
+
+        fun ekleGezilecekYer(context: Context, item:YerEntity){
+            val goA=GezilecekOperation(context)
+            goA.yerEkle(item)
         }
 
     }

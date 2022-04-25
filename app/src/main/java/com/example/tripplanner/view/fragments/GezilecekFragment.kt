@@ -1,12 +1,12 @@
 package com.example.tripplanner.view.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tripplanner.Controller.bll.TripPlannerLogic
 import com.example.tripplanner.R
@@ -30,9 +30,14 @@ class GezilecekFragment : Fragment() {
     }
 
     fun getTumGezilecekYerler(){
-        yerlerListe= TripPlannerLogic.getYerler(requireContext())
+
+        /*yerlerListe= TripPlannerLogic.getGezilecekYerler(requireContext())
+        binding.rvGezilecekYerler.layoutManager=LinearLayoutManager(requireContext())
+        binding.rvGezilecekYerler.adapter= YerAdapter(requireContext(),yerlerListe,::itemClick)*/
+
+        yerlerListe= TripPlannerLogic.getGezilecekYerler(requireContext())
         val lm = LinearLayoutManager(requireContext())
-        lm.orientation= LinearLayoutManager.HORIZONTAL
+        lm.orientation= LinearLayoutManager.VERTICAL
         binding.rvGezilecekYerler.layoutManager=lm
         binding.rvGezilecekYerler.adapter=YerAdapter(requireContext(),yerlerListe,::itemClick)
 
@@ -40,7 +45,7 @@ class GezilecekFragment : Fragment() {
 
     fun itemClick(position:Int){
         Toast.makeText(requireContext(),yerlerListe.get(position).yerAdi + "tıklandı", Toast.LENGTH_SHORT).show()
-
+        //findNavController().navigate(R.id.action_gezilecekFragment2_to_detayFragment)
     }
 
 }

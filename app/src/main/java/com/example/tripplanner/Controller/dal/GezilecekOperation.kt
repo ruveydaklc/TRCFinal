@@ -50,17 +50,17 @@ class GezilecekOperation(context: Context) {
     }
 
 
-    fun getTumGezilecekYer(): Cursor {
+    fun getGezilecekYer(): Cursor {
         val sorgu = "SELECT * FROM Yer"
         return tripPlannerDatabase!!.rawQuery(sorgu,null)
     }
 
     @SuppressLint("Range")
-    fun getGezilecekYer():ArrayList<YerEntity>{
+    fun getTumGezilecekYer():ArrayList<YerEntity>{
         val gezilecekListe=ArrayList<YerEntity>()
         var yer : YerEntity
         openDB()
-        var cursor: Cursor =getTumGezilecekYer()
+        var cursor: Cursor =getGezilecekYer()
         if (cursor.moveToFirst()){
             do {
                 yer= YerEntity()
@@ -70,7 +70,7 @@ class GezilecekOperation(context: Context) {
                 yer.kisaAciklama=cursor.getString(cursor.getColumnIndex(yerAciklamaStr))
 
                 gezilecekListe.add(yer)
-            }while (cursor.moveToFirst())
+            }while (cursor.moveToNext())
         }
         closeDB()
         return gezilecekListe

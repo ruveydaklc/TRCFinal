@@ -1,10 +1,12 @@
 package com.example.tripplanner.view.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.tripplanner.R
 import com.example.tripplanner.databinding.ActivityMainBinding
 import com.example.tripplanner.databinding.TabLayoutBinding
@@ -24,8 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.fabYerEkle.setOnClickListener {
             fragmentDegistir(YerEkleFragment())
-            binding.tabLayout.isVisible=false
-            binding.fabYerEkle.isVisible=false
         }
 
         //adding tabs
@@ -70,11 +70,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun fragmentDegistir(fragment:Fragment){
+        binding.tabLayout.isVisible=true
+        binding.fabYerEkle.isVisible=true
+
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fragmentContainerView, fragment)
         ft.commit()
+    }
 
-
+    override fun onBackPressed() {
+        //todo değistir - geri gidince main activityi tekrar başlatıyor
+        val intent= Intent(this,MainActivity::class.java)
+        startActivity(intent)
     }
 
 
