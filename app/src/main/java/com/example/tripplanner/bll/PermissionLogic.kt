@@ -35,8 +35,7 @@ class PermissionLogic {
                 requestList.add(Manifest.permission.ACCESS_COARSE_LOCATION)
             }
             if (requestList.size == 0) {
-                //granted
-                //Keep on doing operations
+                activity.grantedFunc()
             } else {
                 activity.requestPermissions(requestList.toTypedArray(), reqCodeLocations)
             }
@@ -45,8 +44,7 @@ class PermissionLogic {
         @RequiresApi(Build.VERSION_CODES.M)
         fun mediaPermissionControl(
             activity: PermissionActivity,
-            context: Context,
-            ){
+            context: Context){
             val requestList= ArrayList<String>()
             var permStatus=
                 ContextCompat.checkSelfPermission(context,Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED
@@ -59,8 +57,7 @@ class PermissionLogic {
                 requestList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
             if (requestList.size==0){
-                //granted
-
+                activity.grantedFunc()
             }else{
                 activity.requestPermissions(requestList.toTypedArray(), reqCodeLocations)
             }
