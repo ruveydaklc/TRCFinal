@@ -4,22 +4,58 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64.encodeToString
+import android.widget.Toast
+import com.example.tripplanner.dal.TripPlannerOperation
+import com.example.tripplanner.model.GezdiklerimEntity
+import com.example.tripplanner.model.YerEntity
+import com.example.tripplanner.view.fragments.YerEkleFragment
 import java.io.ByteArrayOutputStream
 import java.io.FileOutputStream
 import java.lang.Exception
-import java.util.*
 
 class TripPlannerLogic {
 
     companion object {
 
-        fun persistDate(date: Date?): Long? {
+        fun yerEkle(context: Context, yerEntity: YerEntity) : Boolean{
+            val tripPlannerOperation = TripPlannerOperation(context)
+            return tripPlannerOperation.yerEkle(yerEntity).also {
+                if(it)
+                    Toast.makeText(context,"Yer başarıyla eklenmiştir", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        fun ziyaretEkle(context: Context, gezdiklerimEntity: GezdiklerimEntity) : Boolean{
+            val tripPlannerOperation = TripPlannerOperation(context)
+            return tripPlannerOperation.ziyaretEkle(gezdiklerimEntity).also {
+                if(it)
+                    Toast.makeText(context,"Ziyaret başarıyla eklenmiştir", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        fun tumYerleriGetir(context: Context) : ArrayList<YerEntity>{
+            val tripPlannerOperation = TripPlannerOperation(context)
+            return tripPlannerOperation.tumYerleriGetir()
+        }
+
+        fun ziyaretleriGetir(context: Context, yerEntity: YerEntity) : ArrayList<GezdiklerimEntity> {
+            val tripPlannerOperation = TripPlannerOperation(context)
+            return tripPlannerOperation.ziyaretleriGetir(yerEntity)
+        }
+
+        fun gezdiklerimiGetir(context: Context) : ArrayList<YerEntity> {
+            val tripPlannerOperation = TripPlannerOperation(context)
+            return tripPlannerOperation.gezdiklerimiGetir()
+        }
+
+        // To Be Used Later.
+/*        fun persistDate(date: Date?): Long? {
             return if (date != null) {
                 date.getTime()
                 //dsasadadsadasdsadsads
                 //dasdasdsd
             } else null
-        }
+        }*/
 
         // TODO Base64 in DB or a local png and URI in DB as str.
 
