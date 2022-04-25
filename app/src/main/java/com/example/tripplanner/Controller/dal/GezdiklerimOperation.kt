@@ -1,9 +1,9 @@
-package com.example.tripplanner.dal
+package com.example.tripplanner.Controller.dal
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import com.example.tripplanner.bll.TripPlannerLogic
+import com.example.tripplanner.Controller.bll.TripPlannerLogic
 import com.example.tripplanner.model.GezdiklerimEntity
 import com.example.tripplanner.model.YerEntity
 
@@ -13,6 +13,7 @@ class GezdiklerimOperation(context: Context) {
     var tripPlannerDatabase : SQLiteDatabase? = null
     var dbOpenHelper: DatabaseOpenHelper
 
+    val dbName="TripPlannerDB"
     /** Constant Strings */
     val gezdiklerimTableStr = "Gezdiklerim"
     val yerTableStr = "Yer"
@@ -23,7 +24,7 @@ class GezdiklerimOperation(context: Context) {
     val gezdiklerimAciklamaStr = "Aciklama"
 
     init {
-        dbOpenHelper = DatabaseOpenHelper(context, "TripPlannerDB",null,1)
+        dbOpenHelper = DatabaseOpenHelper(context, dbName,null,1)
     }
 
     fun openDB(){

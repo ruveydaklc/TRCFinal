@@ -42,12 +42,12 @@ class MainActivity : AppCompatActivity() {
     fun tabOlustur(){
         var tab= TabLayoutBinding.inflate(layoutInflater)
         tab.tvbaslik.text="Gezilecek"
-        tab.ivTabIcon.setImageResource(R.drawable.gezilecekler_va)
+        tab.ivTabIcon.setImageResource(R.drawable.gezilecekler_icon)
         binding.tabLayout.getTabAt(0)!!.setCustomView(tab.root)
 
         tab = TabLayoutBinding.inflate(layoutInflater)
         tab.tvbaslik.text="Gezdiklerim"
-        tab.ivTabIcon.setImageResource(R.drawable.gezdiklerim_va)
+        tab.ivTabIcon.setImageResource(R.drawable.gezdiklerim_icon)
         binding.tabLayout.getTabAt(1)!!.setCustomView(tab.root)
     }
 
