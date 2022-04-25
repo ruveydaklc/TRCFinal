@@ -10,11 +10,11 @@ import java.util.*
 class YerViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
     /** Define View Elements*/
-    //val emptyTv : TextView
+    val emptyTv : TextView
 
     init {
         // TODO views and click event
-        //emptyTv = itemView.findViewById<TextView>(R.id.emptyTv)
+        emptyTv = itemView.findViewById<TextView>(R.id.textKisaAciklama)
 
     }
 
