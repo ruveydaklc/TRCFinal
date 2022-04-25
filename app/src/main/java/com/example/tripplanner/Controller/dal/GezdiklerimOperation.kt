@@ -1,11 +1,13 @@
 package com.example.tripplanner.Controller.dal
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.example.tripplanner.Controller.bll.TripPlannerLogic
+import com.example.tripplanner.model.GezdiklerimEntity
 import com.example.tripplanner.model.YerEntity
-import com.example.tripplanner.model.ZiyaretEntity
 
 class GezdiklerimOperation(context: Context) {
 
@@ -37,10 +39,10 @@ class GezdiklerimOperation(context: Context) {
         }
     }
 
-    fun ziyaretEkle(gezdiklerimEntity: ZiyaretEntity) : Boolean{
+    fun ziyaretEkle(gezdiklerimEntity: GezdiklerimEntity) : Boolean{
 
         val cv = ContentValues()
-       // cv.put(gezdiklerimTarihStr, TripPlannerLogic.persistDate(ZiyaretEntity.tarih))
+        cv.put(gezdiklerimTarihStr, TripPlannerLogic.persistDate(gezdiklerimEntity.tarih))
         cv.put(gezdiklerimAciklamaStr,gezdiklerimEntity.aciklama)
         cv.put(yerTableStr,gezdiklerimEntity.yerId)
 
@@ -54,6 +56,27 @@ class GezdiklerimOperation(context: Context) {
 
     }
 
+    fun getTumGezilecekYer(): Cursor {
+        val sorgu = "SELECT * FROM Gezdiklerim"
+        return tripPlannerDatabase!!.rawQuery(sorgu,null)
+    }
 
+    @SuppressLint("Range")
+    fun getGezilecekYer():ArrayList<YerEntity>{
+        val geziklerimListe=ArrayList<YerEntity>()
+        var yer : GezdiklerimEntity
+        openDB()
+        var cursor: Cursor =getTumGezilecekYer()
+        if (cursor.moveToFirst()){
+            do {
+
+                //todo gezilen yerler
+
+
+            }while (cursor.moveToNext())
+        }
+        closeDB()
+        return geziklerimListe
+    }
 
 }

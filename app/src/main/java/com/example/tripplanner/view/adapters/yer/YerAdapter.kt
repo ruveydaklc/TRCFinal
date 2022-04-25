@@ -8,17 +8,17 @@ import com.example.tripplanner.R
 import com.example.tripplanner.model.YerEntity
 import kotlin.collections.ArrayList
 
-class YerAdapter(val context: Context, var gezilecekListe:ArrayList<YerEntity>, val itemClick:(position:Int)->Unit):RecyclerView.Adapter<YerViewHolder>() {
+class YerAdapter(val context: Context, var yerListe:ArrayList<YerEntity>, val itemClick:(position:Int)->Unit):RecyclerView.Adapter<YerViewHolder>() {
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YerViewHolder {
          val view = LayoutInflater.from(context).inflate(R.layout.gezilecekler_card,parent,false)
-         return YerViewHolder(view,gezilecekListe,itemClick)
+         return YerViewHolder(view,yerListe,itemClick)
      }
 
     override fun onBindViewHolder(holder: YerViewHolder, position: Int) {
-        holder.bindDataToViews(context,gezilecekListe.get(position))
+        holder.bindDataToViews(context,yerListe.get(position))
     }
 
     override fun getItemCount(): Int {
-        return gezilecekListe.size
+        return yerListe.size
     }
 }
