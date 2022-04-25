@@ -14,7 +14,7 @@ class YerViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
     init {
         // TODO views and click event
-        emptyTv = itemView.findViewById<TextView>(R.id.emptyTv)
+        emptyTv = itemView.findViewById<TextView>(R.id.textKisaAciklama)
 
     }
 
