@@ -8,7 +8,7 @@ class DatabaseOpenHelper(context: Context, name: String, factory: SQLiteDatabase
 
     override fun onCreate(p0: SQLiteDatabase) {
         val yerSorgu = "CREATE TABLE Yer(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, YerAdi TEXT, KisaTanim TEXT, KisaAciklama TEXT)"
-        val gezdiklerimSorgu = "CREATE TABLE Gezdiklerim(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Tarih Int, Aciklama TEXT, Yer INTEGER NOT NULL, FOREIGN KEY(Owner) REFERENCES Yer(Id))"
+        val gezdiklerimSorgu = "CREATE TABLE Gezdiklerim(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Tarih Int, Aciklama TEXT, Yer INTEGER NOT NULL, FOREIGN KEY(Yer) REFERENCES Yer(Id))"
         // TODO Use cursor.getLong() when receiving the date.
 
         p0.execSQL(yerSorgu)
