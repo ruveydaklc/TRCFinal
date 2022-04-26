@@ -12,6 +12,7 @@ import com.example.tripplanner.Controller.bll.TripPlannerLogic
 import com.example.tripplanner.R
 import com.example.tripplanner.databinding.FragmentGezilecekBinding
 import com.example.tripplanner.model.YerEntity
+import com.example.tripplanner.view.activities.MainActivity
 import com.example.tripplanner.view.adapters.yer.YerAdapter
 
 
@@ -42,6 +43,7 @@ class GezilecekFragment : Fragment() {
     fun itemClick(position:Int){
         Toast.makeText(requireContext(),yerlerListe.get(position).yerAdi + "tıklandı", Toast.LENGTH_SHORT).show()
         //findNavController().navigate(R.id.action_gezilecekFragment2_to_detayFragment)
+        (activity as MainActivity).fragmentDegistir(DetayFragment())
     }
 
 }
